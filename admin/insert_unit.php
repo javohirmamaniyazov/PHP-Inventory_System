@@ -1,13 +1,13 @@
 <?php
 include('header.php');
 include '../user/connection.php'
-    ?>
+?>
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
         <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Add New User</a></div>
+                Add New Unit</a></div>
     </div>
     <!--End-breadcrumbs-->
 
@@ -16,45 +16,25 @@ include '../user/connection.php'
         <div class="row-fluid" style="background-color: white; min-height: 1000px; padding:10px;">
             <div class="span12">
                 <div class="alert alert-danger" id="error" style="display: none;">
-                    This user already exist! Please Try Another
+                    This unit already exist! Please Try Another
                 </div>
 
                 <div class="alert alert-success" id="success" style="display: none;">
-                    User Added Successfully
+                    Unit Added Successfully
                 </div>
                 <div class="widget-box">
 
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                        <h5>Add New User</h5>
+                        <h5>Add New Unit</h5>
                     </div>
                     <div class="widget-content nopadding">
                         <form action="" name="form1" method="post" class="form-horizontal">
                             <div class="control-group">
-                                <label class="control-label">User Name :</label>
+                                <label class="control-label">Unit Name :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" required placeholder="Username" name="username" />
+                                    <input type="text" class="span11" required placeholder="Unit Name" name="unitname" />
                                 </div>
                             </div>
-
-                            <div class="control-group">
-                                <label class="control-label">Password</label>
-                                <div class="controls">
-                                    <input type="password" required class="span11" placeholder="Enter Password"
-                                        name="password" />
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label class="control-label">Select Role</label>
-                                <div class="controls">
-                                    <select required class="span11" name="role">
-                                        <option>user</option>
-                                        <option>admin</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
 
                             <div class="form-actions">
                                 <button type="submit" name="submit1" class="btn btn-success">Save</button>
@@ -69,13 +49,12 @@ include '../user/connection.php'
                             <tr>
                                 <th>#</th>
                                 <th>Username</th>
-                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $res = mysqli_query($link, 'select * from users');
+                            $res = mysqli_query($link, 'select * from units');
                             while ($row = mysqli_fetch_array($res)) {
                                 ?>
                                 <tr>
@@ -83,15 +62,12 @@ include '../user/connection.php'
                                         <?php echo $row['id'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['username'] ?>
+                                        <?php echo $row['unit'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['role'] ?>
-                                    </td>
-                                    <td>
-                                        <a href="edit_user.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><i
+                                        <a href="edit_unit.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><i
                                                 class="icon-pencil"></i> Edit</a>
-                                        <a href="delete_user.php?id=<?php echo $row['id'] ?>" class="btn btn-danger"><i
+                                        <a href="delete_unit.php?id=<?php echo $row['id'] ?>" class="btn btn-danger"><i
                                                 class="icon-trash"></i> Delete</a>
                                     </td>
 
@@ -110,7 +86,7 @@ include '../user/connection.php'
 <?php
 if (isset($_POST['submit1'])) {
     $count = 0;
-    $result = mysqli_query($link, "select * from users where username='$_POST[username]'");
+    $result = mysqli_query($link, "select * from units where unit='$_POST[unitname]'");
     $count = mysqli_num_rows($result);
 
     if ($count > 0) {
@@ -124,7 +100,7 @@ if (isset($_POST['submit1'])) {
         </script>
         <?php
     } else {
-        mysqli_query($link, "insert into users values(NULL, '$_POST[username]', '$_POST[password]', '$_POST[role]')");
+        mysqli_query($link, "insert into units values(NULL, '$_POST[unitname]')");
 
         ?>
         <script type="text/javascript">

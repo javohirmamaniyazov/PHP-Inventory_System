@@ -51,8 +51,16 @@
             <a href="index.html"><i class="icon icon-home"></i><span>Dashboard</span></a>
         </li>
 
-        <li class="submenu">
+        <li class="">
             <a href="insert_user.php"><i class="icon icon-user"></i><span>Users</span></a>
+        </li>
+
+        <li class="">
+            <a href="insert_unit.php"><i class="icon icon-user"></i><span>Units</span></a>
+        </li>
+
+        <li class="">
+            <a href="insert_category.php"><i class="icon icon-list"></i><span>Categories</span></a>
         </li>
 
         <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span
