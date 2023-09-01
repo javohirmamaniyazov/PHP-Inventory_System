@@ -133,50 +133,6 @@ if (isset($_POST['submit1'])) {
     </div>
 </div>
 
-<?php
-// if (isset($_POST['submit1'])) {
-//     $category = $_POST['category'];
-//     $imageUploadDir = 'images/'; 
-//     $imageFileName = $_FILES['image']['name'];
-//     $targetImagePath = $imageUploadDir . $imageFileName;
-
-//     $result = mysqli_query($link, "SELECT * FROM categories WHERE category='$category'");
-//     $count = mysqli_num_rows($result);
-
-//     if ($count > 0) {
-//         echo '<script type="text/javascript">
-//             document.getElementById("success").style.display = "none";
-//             document.getElementById("error").style.display = "block";
-//             setTimeout(function () {
-//                 window.location.href = window.location.href;
-//             }, 3000);
-//         </script>';
-//     } else {
-//         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetImagePath)) {
-//             $insertQuery = "INSERT INTO categories (category, image_filename) VALUES ('$category', '$imageFileName')";
-//             if (mysqli_query($link, $insertQuery)) {
-//                 echo '<script type="text/javascript">
-//                     document.getElementById("error").style.display = "none";
-//                     document.getElementById("success").style.display = "block";
-//                     setTimeout(function () {
-//                         window.location.href = window.location.href;
-//                     }, 3000);
-//                 </script>';
-//             } else {
-//                 echo '<script type="text/javascript">
-//                     // Handle error, display message, etc.
-//                 </script>';
-//             }
-//         } else {
-//             echo '<script type="text/javascript">
-//                 // Handle error, display message, etc.
-//             </script>';
-//         }
-//     }
-// }
-?>
-
-
 <!--end-main-container-part-->
 
 <?php
