@@ -1,8 +1,6 @@
 <?php
 include('header.php');
 include('../user/connection.php');
-
-
 ?>
 
 <!-- The rest of your HTML code -->
@@ -87,23 +85,6 @@ include('../user/connection.php');
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label">Quantity :</label>
-                                <div class="controls">
-                                    <input type="number" name="quantity" id="quantityInput" class="span11"
-                                        placeholder="Enter Quantity" required>
-                                </div>
-                            </div>
-
-                            <div class="control-group">
-                                <label class="control-label">Price ($):</label>
-                                <div class="controls">
-                                    <input type="number" name="price" class="span11" value="0"
-                                        placeholder="Enter Price" />
-                                </div>
-                            </div>
-
-
-                            <div class="control-group">
                                 <label class="control-label">Expiration Date :</label>
                                 <div class="controls">
                                     <input type="date" name="expiration_date" class="span11" required
@@ -127,8 +108,6 @@ include('../user/connection.php');
                                 <th>Product Name</th>
                                 <th>Unit</th>
                                 <th>Product Size</th>
-                                <th>Product Quantity</th>
-                                <th>Product Price</th>
                                 <th>Expiration Date</th>
                                 <th>Action</th>
                             </tr>
@@ -155,12 +134,6 @@ include('../user/connection.php');
                                         <?php echo $row['size'] ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['quantity'] ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $row['price'] ?>
-                                    </td>
-                                    <td>
                                         <?php echo date('M j, Y', strtotime($row['expiration_date'])); ?>
                                     </td>
                                     <td>
@@ -182,7 +155,7 @@ include('../user/connection.php');
     </div>
 </div>
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const unitSelect = document.getElementById("unitSelect");
         const quantityInput = document.getElementById("quantityInput");
@@ -209,7 +182,7 @@ include('../user/connection.php');
             }
         });
     });
-</script>
+</script> -->
 
 
 
@@ -217,9 +190,8 @@ include('../user/connection.php');
 <?php
 if (isset($_POST['submit1'])) {
     $count = 0;
-    $result = mysqli_query($link, "select * from products where category='$_POST[category]' && product='$_POST[product]' && unit='$_POST[unit]' && size='$_POST[size]' && expiration_date='$_POST[expiration_date]' && quantity='$_POST[quantity]' && price='$_POST[price]'") or die(mysqli_error($link));
+    $result = mysqli_query($link, "select * from products where category='$_POST[category]' && product='$_POST[product]' && unit='$_POST[unit]' && size='$_POST[size]' && expiration_date='$_POST[expiration_date]'") or die(mysqli_error($link));
     $count = mysqli_num_rows($result);
-    $quantity = $_POST['quantity'];
 
     if ($count > 0) {
         ?>
@@ -233,7 +205,7 @@ if (isset($_POST['submit1'])) {
         <?php
     } else {
         // mysqli_query($link, "insert into products values(NULL, '$_POST[category]', '$_POST[product]', '$_POST[unit]', '$_POST[size]', '$_POST[expiration_date]', '$_POST[quantity]')") or die(mysqli_error($link));
-        mysqli_query($link, "INSERT INTO products (category, product, unit, size, expiration_date, quantity, price) VALUES ('$_POST[category]', '$_POST[product]', '$_POST[unit]', '$_POST[size]', '$_POST[expiration_date]', '$quantity', '$_POST[price]')") or die(mysqli_error($link));
+        mysqli_query($link, "INSERT INTO products (category, product, unit, size, expiration_date) VALUES ('$_POST[category]', '$_POST[product]', '$_POST[unit]', '$_POST[size]', '$_POST[expiration_date]')") or die(mysqli_error($link));
 
 
         ?>

@@ -99,16 +99,16 @@ include('../user/connection.php');
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                Products</a></div>
+        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
+               Reports of Products</a></div>
     </div>
     <!--End-breadcrumbs-->
 
     <!--Action boxes-->
     <div class="container-fluid">
-        <div class="row-fluid">
+    <div class="row-fluid">
             <div class="span12">
-                <h3 class="text-center">Search Products</h3>
+                <h3 class="text-center">Reports of Products</h3>
                 <div class="well search-form-container">
                     <form action="" method="POST" class="form-inline search-form">
                         <div style="display: flex;">
@@ -178,74 +178,4 @@ include('../user/connection.php');
             }
         }
         ?>
-
-
-        <div class="row-fluid">
-            <div class="span12">
-                <h3 class="text-center">Warehouse Dashboard</h3>
-                <div class="well">
-                    <div class="row-fluid">
-                        <div class="span4 text-center">
-                            <h4>Products</h4>
-                            <div class="dashboard-info">
-                                <p>Total Products</p>
-                                <p class="dashboard-count">
-                                    <?php echo getTotalProducts($link); ?>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="span4 text-center">
-                            <h4>Categories</h4>
-                            <div class="dashboard-info">
-                                <p>Total Categories</p>
-                                <p class="dashboard-count">
-                                    <?php echo getTotalCategories($link); ?>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="span4 text-center">
-                            <h4>Users</h4>
-                            <div class="dashboard-info">
-                                <p>Total Users</p>
-                                <p class="dashboard-count">
-                                    <?php echo getTotalUsers($link); ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-
-    <?php
-    include('footer.php');
-    ?>
-
-    <?php
-    function getTotalProducts($link)
-    {
-        // Perform a database query to count total products and return the count
-        $result = mysqli_query($link, 'SELECT COUNT(*) AS total FROM products');
-        $row = mysqli_fetch_assoc($result);
-        return $row['total'];
-    }
-
-    function getTotalCategories($link)
-    {
-        // Perform a database query to count total categories and return the count
-        $result = mysqli_query($link, 'SELECT COUNT(*) AS total FROM categories');
-        $row = mysqli_fetch_assoc($result);
-        return $row['total'];
-    }
-
-    function getTotalUsers($link)
-    {
-        // Perform a database query to count total users and return the count
-        $result = mysqli_query($link, 'SELECT COUNT(*) AS total FROM users');
-        $row = mysqli_fetch_assoc($result);
-        return $row['total'];
-    }
-    ?>

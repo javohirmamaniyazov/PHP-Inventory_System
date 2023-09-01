@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>PHP IMS</title>
+    <title>Warehouse</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -20,37 +20,24 @@
 
     <div id="header">
 
-        <h2 style="color: white;position: absolute">
-            <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">PHP IMS</a>
-        </h2>
+        <h3 style="color: white;position: absolute">
+            <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">Warehouse</a>
+        </h3>
     </div>
-
 
 
     <!--top-Header-menu-->
-    <div id="user-nav" class="navbar navbar-inverse">
-        <ul class="nav">
-            <li class="dropdown" id="profile-messages">
-                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i
-                        class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
-                </ul>
-            </li>
-
-
-        </ul>
-    </div>
+    
 
     <!--sidebar-menu-->
     <div id="sidebar">
         <ul>
             <li class="active">
                 <a href="dashboard.php"><i class="icon icon-home"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="">
+                <a href="reports.php"><i class="icon icon-user"></i><span>Reports</span></a>
             </li>
 
             <li class="">
@@ -67,6 +54,10 @@
 
             <li class="">
                 <a href="insert_product.php"><i class="icon icon-list"></i><span>Products</span></a>
+            </li>
+
+            <li class="">
+                <a href="stock_master.php"><i class="icon icon-list"></i><span>Stock Master</span></a>
             </li>
 
             <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span

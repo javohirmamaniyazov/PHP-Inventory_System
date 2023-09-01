@@ -109,14 +109,6 @@ $id = $_GET['id'];
                             </div>
 
                             <div class="control-group">
-                                    <label class="control-label">Quantity :</label>
-                                    <div class="controls">
-                                        <input type="number" name="quantity" class="span11" required value="<?php echo $quantity; ?>"
-                                            placeholder="Enter Quantity" />
-                                    </div>
-                                </div>
-
-                            <div class="control-group">
                                     <label class="control-label">Expiration Date :</label>
                                     <div class="controls">
                                         <input type="date" name="expiration_date" class="span11" required  value="<?php echo $expiration_date ?>"
@@ -140,7 +132,7 @@ $id = $_GET['id'];
 <?php
 if (isset($_POST['submit1'])) {
     $count = 0;
-    $result = mysqli_query($link, "select * from products where category='$_POST[category]' && product='$_POST[product]' && unit='$_POST[unit]' && size='$_POST[size]' && expiration_date='$_POST[expiration_date]' && quantity='$_POST[quantity]'") or die(mysqli_error($link));
+    $result = mysqli_query($link, "select * from products where category='$_POST[category]' && product='$_POST[product]' && unit='$_POST[unit]' && size='$_POST[size]' && expiration_date='$_POST[expiration_date]'") or die(mysqli_error($link));
     $count = mysqli_num_rows($result);
 
     if ($count > 0) {
@@ -154,7 +146,7 @@ if (isset($_POST['submit1'])) {
         </script>
         <?php
     } else {
-        mysqli_query($link, "update products set category='$_POST[category]', product='$_POST[product]', unit='$_POST[unit]', size='$_POST[size]', expiration_date='$_POST[expiration_date]', quantity='$_POST[quantity]' where id='$id'") or die(mysqli_error($link));
+        mysqli_query($link, "update products set category='$_POST[category]', product='$_POST[product]', unit='$_POST[unit]', size='$_POST[size]', expiration_date='$_POST[expiration_date]' where id='$id'") or die(mysqli_error($link));
 
         ?>
         <script type="text/javascript">
