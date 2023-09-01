@@ -3,11 +3,13 @@ include('header.php');
 include '../user/connection.php';
 
 ?>
+
+
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="dashboard.php" class="tip-bottom"><i class="icon-home"></i>
                 Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->

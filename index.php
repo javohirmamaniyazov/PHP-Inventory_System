@@ -1,18 +1,18 @@
 <?php
-include './user/connection.php';
+include 'user/connection.php';
 
 // Check if the user is already logged in
 // session_start();
-if (isset($_SESSION['username']) && isset($_SESSION['role'])) {
-    $role = $_SESSION['role'];
-    if ($role === 'admin') {
-        header('Location: admin/dashboard.php');
-        exit;
-    } elseif ($role === 'user') {
-        header('Location: user/dashboard.php');
-        exit;
-    }
-}
+// if (isset($_SESSION['username']) && isset($_SESSION['role'])) {
+//     $role = $_SESSION['role'];
+//     if ($role === 'admin') {
+//         header('Location: admin/dashboard.php');
+//         exit;
+//     } elseif ($role === 'user') {
+//         header('Location: user/dashboard.php');
+//         exit;
+//     }
+// }
 
 if (isset($_POST['submit1'])) {
     $username = mysqli_escape_string($link, $_POST['username']);
@@ -25,13 +25,14 @@ if (isset($_POST['submit1'])) {
     if ($count > 0) {
         // Fetch the user's role from the database
         $row = mysqli_fetch_assoc($result);
+        $user_id = $row['id'];
         $role = $row['role'];
 
         // Store user information in a session
         session_start();
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $role;
-
+        $_SESSION['user_id'] = $user_id; 
         // Check the role and redirect accordingly
         if ($role === 'admin') {
             header('Location: admin/dashboard.php');

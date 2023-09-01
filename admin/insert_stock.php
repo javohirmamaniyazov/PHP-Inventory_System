@@ -2,25 +2,25 @@
 include('header.php');
 include('../user/connection.php');
 
-// Check if the form is submitted to add a new stock item
 if (isset($_POST['submit1'])) {
-    // Get the authenticated user's ID (you should implement user authentication)
-    $owner_id = 1; // Replace with the actual authenticated user's ID
+    $owner_id = 1; 
 
-    // Get other form inputs
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
 
-    // Insert the new stock item into the database
-    mysqli_query($link, "INSERT INTO stock (owner_id, product_id, quantity, price) VALUES ('$owner_id', '$product_id', '$quantity', '$price')") or die(mysqli_error($link));
+    $existing_stock_query = mysqli_query($link, "SELECT * FROM stock WHERE owner_id = '$owner_id' AND product_id = '$product_id'");
+    
+    if (mysqli_num_rows($existing_stock_query) > 0) {
+        $error = "A stock item with the same product name already exists.";
+    } else {
+        mysqli_query($link, "INSERT INTO stock (owner_id, product_id, quantity, price) VALUES ('$owner_id', '$product_id', '$quantity', '$price')") or die(mysqli_error($link));
 
-    // Redirect to the stock master page after successful insertion
-    header('Location: stock_master.php');
-    exit;
+        header('Location: stock_master.php');
+        exit;
+    }
 }
 ?>
-
 
 <div id="content">
     <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>

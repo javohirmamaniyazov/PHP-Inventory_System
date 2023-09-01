@@ -1,13 +1,11 @@
 <?php
 include('header.php');
-include('../user/connection.php');
+include('connection.php');
 ?>
-
 
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
-                Dashboard</a></div>
+        <div id="breadcrumb"><a href="dashboard.php" class="tip-bottom"><i class="icon-home"></i> Dashboard</a></div>
     </div>
 
     <div class="container-fluid">
@@ -29,6 +27,7 @@ include('../user/connection.php');
                             <th>Price</th>
                             <th>Actions</th>
                         </tr>
+                    </thead>
                     <tbody>
                         <?php
                         $res = mysqli_query($link, 'SELECT s.id, s.owner_id, s.product_id, s.quantity, s.price FROM stock s');
@@ -46,40 +45,40 @@ include('../user/connection.php');
                             $product_name = $product_row['product'];
                             ?>
                             <tr>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $owner_name; ?></td>
+                                <td><?php echo $product_name; ?></td>
+                                <td><?php echo $row['quantity']; ?></td>
+                                <td><?php echo $row['price']; ?> $</td>
                                 <td>
-                                    <?php echo $row['id']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $owner_name; ?>
-                                </td>
-                                <td>
-                                    <?php echo $product_name; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['quantity']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['price']; ?> $
-                                </td>
-                                <td>
-                                    <a href="edit_stock.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i
-                                            class="icon-pencil"></i> Edit</a>
-                                    <a href="delete_stock.php?id=<?php echo $row['id']; ?>" class="btn btn-danger"><i
-                                            class="icon-trash"></i> Delete</a>
+                                    <?php
+                                    session_start();
+                                    if (isset($_SESSION['role']) || isset($_SESSION['user_id'])) {
+                                        $role = $_SESSION['role'];
+                                        $user_id = $_SESSION['user_id'];
+
+                                        if ($role === 'admin' || $user_id === $row['owner_id']) {
+                                            ?>
+                                            <a href="edit_stock.php?id=<?php echo $row['id']; ?>"
+                                                class="btn btn-warning"><i class="icon-pencil"></i> Edit</a>
+                                            <a href="delete_stock.php?id=<?php echo $row['id']; ?>"
+                                                class="btn btn-danger"><i class="icon-trash"></i> Delete</a>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                             <?php
                         }
                         ?>
                     </tbody>
-
                 </table>
             </div>
         </div>
     </div>
 </div>
 </body>
-
 </html>
 
 <?php

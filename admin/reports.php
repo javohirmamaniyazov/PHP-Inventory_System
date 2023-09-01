@@ -99,7 +99,7 @@ include('../user/connection.php');
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="dashboard.php" class="tip-bottom"><i class="icon-home"></i>
                 Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -139,44 +139,68 @@ include('../user/connection.php');
 
 
         <?php
-        if (isset($_POST['search'])) {
-            $searchDate = $_POST['searchDate'];
-            $searchCategory = $_POST['searchCategory'];
+        // Initialize variables for search criteria
+        $searchDate = isset($_POST['searchDate']) ? mysqli_escape_string($link, $_POST['searchDate']) : '';
+        $searchCategory = isset($_POST['searchCategory']) ? mysqli_escape_string($link, $_POST['searchCategory']) : '';
 
-            $sql = "SELECT p.product, c.category, p.unit, p.size, p.quantity, p.expiration_date
-            FROM products p
-            INNER JOIN categories c ON p.category = c.category
-            WHERE (p.expiration_date >= '$searchDate' OR p.expiration_date IS NULL)
-            " . ($searchCategory ? "AND p.category = '$searchCategory'" : "");
+        // Construct the WHERE clause based on user input
+        $whereClause = '';
 
-            $result = mysqli_query($link, $sql);
+        if (!empty($searchDate) && !empty($searchCategory)) {
+            $whereClause = "WHERE (p.expiration_date >= '$searchDate' OR p.expiration_date IS NULL) AND c.category = '$searchCategory'";
+        } elseif (!empty($searchDate)) {
+            $whereClause = "WHERE p.expiration_date >= '$searchDate' OR p.expiration_date IS NULL";
+        } elseif (!empty($searchCategory)) {
+            $whereClause = "WHERE c.category = '$searchCategory'";
+        }
 
-            if (mysqli_num_rows($result) > 0) {
-                echo "<h3 class='text-center'>Search Results</h3>";
-                echo "<div class='well'>";
-                echo "<table class='table table-bordered'>";
-                echo "<thead>";
-                echo "<tr><th>Product</th><th>Category</th><th>Unit</th><th>Size</th><th>Quantity</th><th>Expiration Date</th></tr>";
-                echo "</thead>";
-                echo "<tbody>";
+        // Search query
+        $sql = "SELECT p.product, c.category, p.unit, p.size, p.expiration_date, s.price, s.quantity
+        FROM products p
+        INNER JOIN categories c ON p.category = c.category
+        LEFT JOIN stock s ON p.id = s.product_id
+        $whereClause";
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['product'] . "</td>";
-                    echo "<td>" . $row['category'] . "</td>";
-                    echo "<td>" . $row['unit'] . "</td>";
-                    echo "<td>" . $row['size'] . "</td>";
-                    echo "<td>" . $row['quantity'] . "</td>";
-                    echo "<td>" . $row['expiration_date'] . "</td>";
-                    echo "</tr>";
-                }
+        $result = mysqli_query($link, $sql);
 
-                echo "</tbody>";
-                echo "</table>";
-                echo "</div>";
-            } else {
-                echo "<p class='text-center'>No results found.</p>";
-            }
+        if (mysqli_num_rows($result) > 0) {
+            ?>
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Unit</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                            <th>Expiration</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['product'] . "</td>";
+                            echo "<td>" . $row['category'] . "</td>";
+                            echo "<td>" . $row['unit'] . "</td>";
+                            echo "<td>" . $row['size'] . "</td>";
+                            echo "<td>" . $row['quantity'] . "</td>";
+                            echo "<td>" . $row['expiration_date'] . "</td>";
+                            echo "<td>" . $row['price'] . "</td>";
+                            echo "</tr>";
+                        }
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php
+
+        } else {
+            echo "<p class='text-center'>No results found.</p>";
         }
         ?>
+
     </div>

@@ -1,9 +1,8 @@
 <?php
 include('header.php');
 include '../user/connection.php';
-
-
 ?>
+
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->

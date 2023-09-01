@@ -1,3 +1,9 @@
+<?php
+include './connection.php';
+session_start();
+$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +30,15 @@
         <h3 style="color: white;position: absolute">
             <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">Warehouse</a>
         </h3>
+    </div>
+
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav">
+            <li class="dropdown" id="profile-messages">
+                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i
+                        class="icon icon-user"></i> <span class="text" style="font-size: 13px;"> Welcome <?php echo $username; ?></span></a>
+            </li>
+        </ul>
     </div>
 
     <!--sidebar-menu-->

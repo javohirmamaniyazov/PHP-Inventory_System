@@ -1,3 +1,20 @@
+<?php
+include '../user/connection.php';
+session_start();
+$username = $_SESSION['username'];
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+
+    if ($role !== 'admin') {
+        ?>
+        <script type="text/javascript">
+            window.location = "../index.php";
+        </script>
+        <?php
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +30,9 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/jquery.gritter.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -27,9 +46,14 @@
         </h3>
     </div>
 
-
-    <!--top-Header-menu-->
-    
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav">
+            <li class="dropdown" id="profile-messages">
+                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i
+                        class="icon icon-user"></i> <span class="text" style="font-size: 13px;"> Welcome <?php echo $username; ?></span></a>
+            </li>
+        </ul>
+    </div>
 
     <!--sidebar-menu-->
     <div id="sidebar">
@@ -74,7 +98,7 @@
         // JavaScript to set the active class based on the current page
         const currentUrl = window.location.href;
         const menuItems = document.querySelectorAll("#sidebar ul li");
-        
+
         menuItems.forEach((menuItem) => {
             const link = menuItem.querySelector("a");
             if (link && currentUrl.includes(link.getAttribute("href"))) {

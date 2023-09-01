@@ -1,8 +1,31 @@
 <?php
 include('header.php');
 include('../user/connection.php');
-?>
 
+if (isset($_POST['submit'])) {
+    $product_id = mysqli_escape_string($link, $_POST['product_id']);
+    $quantity = mysqli_escape_string($link, $_POST['quantity']);
+    $price = mysqli_escape_string($link, $_POST['price']);
+    $owner_id = mysqli_escape_string($link, $_POST['owner_id']);
+
+    // Check if a stock item with the same product name already exists
+    $existing_stock_query = mysqli_query($link, "SELECT * FROM stock WHERE product_id = '$product_id'");
+    
+    if (mysqli_num_rows($existing_stock_query) > 0) {
+        // Stock item already exists, display an error message
+        $error = "A stock item with the same product name already exists.";
+    } else {
+        // Stock item doesn't exist, create a new one
+        $insert_query = "INSERT INTO stock (product_id, quantity, price, owner_id) VALUES ('$product_id', '$quantity', '$price', '$owner_id')";
+        if (mysqli_query($link, $insert_query)) {
+            $message = "Stock item created successfully.";
+        } else {
+            $error = "Error creating stock item: " . mysqli_error($link);
+        }
+    }
+}
+
+?>
 
 <div id="content">
     <div id="content-header">
@@ -72,14 +95,20 @@ include('../user/connection.php');
                         }
                         ?>
                     </tbody>
-
                 </table>
+                <?php
+                if (isset($message)) {
+                    echo "<div class='alert alert-success'>$message</div>";
+                }
+                if (isset($error)) {
+                    echo "<div class='alert alert-danger'>$error</div>";
+                }
+                ?>
             </div>
         </div>
     </div>
 </div>
 </body>
-
 </html>
 
 <?php
