@@ -32,6 +32,10 @@
                 <a href="dashboard.php"><i class="icon icon-home"></i><span>Dashboard</span></a>
             </li>
 
+            <li class="">
+                <a href="stock_master.php"><span>Stock Master</span></a>
+            </li>
+
            
 
         </ul>
