@@ -99,14 +99,14 @@ include('../user/connection.php');
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-               Reports of Products</a></div>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->
 
     <!--Action boxes-->
     <div class="container-fluid">
-    <div class="row-fluid">
+        <div class="row-fluid">
             <div class="span12">
                 <h3 class="text-center">Reports of Products</h3>
                 <div class="well search-form-container">
@@ -118,7 +118,8 @@ include('../user/connection.php');
                             </div>
                             <div class="form-group">
                                 <label for="searchCategory">Select Category:</label>
-                                <select name="searchCategory" id="searchCategory" class="form-control" style="height: 35px;">
+                                <select name="searchCategory" id="searchCategory" class="form-control"
+                                    style="height: 35px;">
                                     <option value="">All Categories</option>
                                     <?php
                                     $result = mysqli_query($link, 'select * from categories');

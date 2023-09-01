@@ -7,8 +7,8 @@ include '../user/connection.php';
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Add New User</a></div>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->
 

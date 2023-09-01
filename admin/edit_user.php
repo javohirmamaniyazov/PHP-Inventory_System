@@ -19,8 +19,9 @@
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                Home</a></div>
+    <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a><a href="insert_user.php"   class="tip-bottom"><i class="icon-user"></i>
+                Insert User</a></div>
     </div>
     <!--End-breadcrumbs-->
 

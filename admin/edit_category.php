@@ -48,8 +48,9 @@ if (isset($_POST['update'])) {
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Edit Category</a></div>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a><a href="insert_category.php"   class="tip-bottom"><i class="fa-solid fa-table-cells-large"></i>
+                Insert Category</a></div>
     </div>
     <!--End-breadcrumbs-->
 

@@ -13,6 +13,8 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/jquery.gritter.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -32,41 +34,32 @@
     <!--sidebar-menu-->
     <div id="sidebar">
         <ul>
-            <li class="active">
+            <li class="" id="dashboard">
                 <a href="dashboard.php"><i class="icon icon-home"></i><span>Dashboard</span></a>
             </li>
 
-            <li class="">
-                <a href="reports.php"><i class="icon icon-user"></i><span>Reports</span></a>
-            </li>
-
-            <li class="">
+            <li class="" id="insert_user">
                 <a href="insert_user.php"><i class="icon icon-user"></i><span>Users</span></a>
             </li>
 
-            <li class="">
-                <a href="insert_unit.php"><i class="icon icon-user"></i><span>Units</span></a>
+            <li class="" id="insert_unit">
+                <a href="insert_unit.php"><i class="fa-solid fa-weight-scale"></i><span>Units</span></a>
             </li>
 
-            <li class="">
-                <a href="insert_category.php"><i class="icon icon-list"></i><span>Categories</span></a>
+            <li class="" id="insert_category">
+                <a href="insert_category.php"><i class="fa-solid fa-table-cells-large"></i><span>Categories</span></a>
             </li>
 
-            <li class="">
-                <a href="insert_product.php"><i class="icon icon-list"></i><span>Products</span></a>
+            <li class="" id="insert_product">
+                <a href="insert_product.php"><i class="fa-brands fa-product-hunt"></i><span>Products</span></a>
             </li>
 
-            <li class="">
-                <a href="stock_master.php"><i class="icon icon-list"></i><span>Stock Master</span></a>
+            <li class="" id="stock_master">
+                <a href="stock_master.php"><i class="fa-solid fa-warehouse"></i><span>Stock Master</span></a>
             </li>
 
-            <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span
-                        class="label label-important">3</span></a>
-                <ul>
-                    <li><a href="form-common.html">Basic Form</a></li>
-                    <li><a href="form-validation.html">Form with Validation</a></li>
-                    <li><a href="form-wizard.html">Form with Wizard</a></li>
-                </ul>
+            <li class="" id="reports">
+                <a href="reports.php"><i class="fa-regular fa-file"></i><span>Reports</span></a>
             </li>
 
         </ul>
@@ -76,3 +69,16 @@
 
         <a href="../logout.php" style="color: white"><i class="icon icon-share-alt"></i><span>LogOut</span></a>
     </div>
+
+    <script>
+        // JavaScript to set the active class based on the current page
+        const currentUrl = window.location.href;
+        const menuItems = document.querySelectorAll("#sidebar ul li");
+        
+        menuItems.forEach((menuItem) => {
+            const link = menuItem.querySelector("a");
+            if (link && currentUrl.includes(link.getAttribute("href"))) {
+                menuItem.classList.add("active");
+            }
+        });
+    </script>

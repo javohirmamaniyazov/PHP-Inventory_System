@@ -29,8 +29,9 @@ $id = $_GET['id'];
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Edit Product</a></div>
+    <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a><a href="insert_product.php"   class="tip-bottom"><i class="fa-brands fa-product-hunt"></i>
+                Insert Product</a></div>
     </div>
     <!--End-breadcrumbs-->
 

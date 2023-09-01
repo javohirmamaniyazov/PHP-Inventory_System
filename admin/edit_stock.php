@@ -39,7 +39,8 @@ if (isset($_GET['id'])) {
 <!-- The HTML form to edit the stock item -->
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a><a href="stock_master.php"   class="tip-bottom"><i class="fa-solid fa-warehouse"></i>
                 Stock Master</a></div>
     </div>
     <div class="container-fluid">
@@ -59,10 +60,9 @@ if (isset($_GET['id'])) {
                                     while ($row = mysqli_fetch_array($result)) {
                                         ?>
 
-                                        <input type="text" value="<?php echo $row['product']; ?>" class="span11"
-                                            readonly />
+                                        <input type="text" value="<?php echo $row['product']; ?>" class="span11" readonly />
                                         <?php
-                                        
+
                                     }
                                     ?>
 

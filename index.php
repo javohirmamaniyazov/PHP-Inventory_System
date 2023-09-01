@@ -2,7 +2,7 @@
 include './user/connection.php';
 
 // Check if the user is already logged in
-session_start();
+// session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['role'])) {
     $role = $_SESSION['role'];
     if ($role === 'admin') {

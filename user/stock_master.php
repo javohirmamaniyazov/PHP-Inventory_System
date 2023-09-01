@@ -6,8 +6,8 @@ include('../user/connection.php');
 
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Stock Master</a></div>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a></div>
     </div>
 
     <div class="container-fluid">

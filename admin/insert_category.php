@@ -6,7 +6,7 @@ include('../user/connection.php');
 
 if (isset($_POST['submit1'])) {
     $category = $_POST['category'];
-    
+
     $imageUploadDir = 'images/';
     $imageFileName = $_FILES['image']['name'];
     $targetImagePath = $imageUploadDir . $imageFileName;
@@ -43,8 +43,8 @@ if (isset($_POST['submit1'])) {
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i>
-                Add New Category</a></div>
+        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+                Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->
 
@@ -66,7 +66,7 @@ if (isset($_POST['submit1'])) {
                     </div>
                     <div class="widget-content nopadding">
                         <form action="" name="categoryForm" method="post" class="form-horizontal"
-                            enctype="multipart/form-data">                            
+                            enctype="multipart/form-data">
                             <div class="control-group">
                                 <label class="control-label">Category Name :</label>
                                 <div class="controls">
@@ -114,7 +114,8 @@ if (isset($_POST['submit1'])) {
                                         <?php
                                         $imagePath = 'images/' . $row['image']; // Assuming images are in the 'images' folder
                                         ?>
-                                        <img src="<?php echo $imagePath; ?>" alt="Category Image" style="width: 77px; height: 35px;">
+                                        <img src="<?php echo $imagePath; ?>" alt="Category Image"
+                                            style="width: 77px; height: 35px;">
                                     </td>
                                     <td>
                                         <a href="edit_category.php?id=<?php echo $row['id'] ?>" class="btn btn-warning"><i

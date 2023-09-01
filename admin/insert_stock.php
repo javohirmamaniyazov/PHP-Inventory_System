@@ -23,9 +23,8 @@ if (isset($_POST['submit1'])) {
 
 
 <div id="content">
-    <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-user"></i> Products</a></div>
-    </div>
+    <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+            Dashboard</a></div>
 
     <div class="container-fluid">
         <div class="row-fluid" style="background-color: white; min-height: 1000px; padding:10px;">
@@ -37,7 +36,8 @@ if (isset($_POST['submit1'])) {
                         <h5>Create Stock</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        <form action="" name="stockForm" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="" name="stockForm" method="post" class="form-horizontal"
+                            enctype="multipart/form-data">
                             <!-- Product Selector -->
                             <div class="control-group">
                                 <label class="control-label">Select Product:</label>
@@ -58,7 +58,8 @@ if (isset($_POST['submit1'])) {
                             <div class="control-group">
                                 <label class="control-label">Quantity:</label>
                                 <div class="controls">
-                                    <input type="number" name="quantity" class="span11" placeholder="Enter Quantity" required>
+                                    <input type="number" name="quantity" class="span11" placeholder="Enter Quantity"
+                                        required>
                                 </div>
                             </div>
 
