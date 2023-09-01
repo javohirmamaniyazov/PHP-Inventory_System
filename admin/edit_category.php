@@ -11,14 +11,6 @@ if (isset($_GET['id'])) {
     $categoryData = mysqli_fetch_assoc($categoryResult);
 }
 
-session_start();
-    if(!isset($_SESSION['admin'])) {
-        ?>
-        <script type="text/javascript">
-            window.location="../index.php"
-        </script>
-        <?php
-    }
 
 if (isset($_POST['update'])) {
     $category = $_POST['category'];
