@@ -2,6 +2,15 @@
 include('header.php');
 include('../user/connection.php');
 
+session_start();
+    if(!isset($_SESSION['admin'])) {
+        ?>
+        <script type="text/javascript">
+            window.location="../index.php"
+        </script>
+        <?php
+    }
+
 $id = $_GET['id'];
 
     $category ="";

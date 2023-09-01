@@ -3,6 +3,14 @@
 
  $id = $_GET['id'];
  mysqli_query($link, "delete from units where id='$id'");
+ session_start();
+    if(!isset($_SESSION['admin'])) {
+        ?>
+        <script type="text/javascript">
+            window.location="../index.php"
+        </script>
+        <?php
+    }
 ?>
 
 <script type="text/javascript">
