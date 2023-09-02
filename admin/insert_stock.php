@@ -56,7 +56,7 @@ if (isset($_POST['submit1'])) {
 
                             <!-- Quantity -->
                             <div class="control-group">
-                                <label class="control-label">Quantity:</label>
+                                <label class="control-label">Quantity of Parts:</label>
                                 <div class="controls">
                                     <input type="number" name="quantity" class="span11" placeholder="Enter Quantity"
                                         required>

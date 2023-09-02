@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
                             <th>ID</th>
                             <th>Stock Owner</th>
                             <th>Product Name</th>
-                            <th>Quantity</th>
+                            <th>Quantity of Parts</th>
                             <th>Price</th>
                             <th>Actions</th>
                         </tr>

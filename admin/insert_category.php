@@ -19,15 +19,31 @@ if (isset($_POST['submit1'])) {
     } else {
         // Check if a file with the same name already exists
         if (file_exists($targetImagePath)) {
-            echo "Sorry, file already exists.";
+            // echo "Sorry, file already exists.";
         } else {
             // Move the uploaded file to the target directory
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetImagePath)) {
                 $insertQuery = "INSERT INTO categories (category, image) VALUES ('$category', '$imageFileName')";
                 if (mysqli_query($link, $insertQuery)) {
-                    echo "Category added successfully.";
+                    ?>
+                    <script type="text/javascript">
+                        document.getElementById("success").style.display = "block";
+                        document.getElementById("error").style.display = "none";
+                        setTimeout(function () {
+                            window.location.href = window.location.href;
+                        }, 2000);
+                    </script>
+                    <?php
                 } else {
-                    echo "Error inserting data into the database.";
+                    ?>
+                    <script type="text/javascript">
+                        document.getElementById("success").style.display = "none";
+                        document.getElementById("error").style.display = "block";
+                        setTimeout(function () {
+                            window.location.href = window.location.href;
+                        }, 2000);
+                    </script>
+                    <?php
                 }
             } else {
                 echo "Error uploading image.";
@@ -44,7 +60,7 @@ if (isset($_POST['submit1'])) {
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="dashboard.php"   class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="dashboard.php" class="tip-bottom"><i class="icon-home"></i>
                 Dashboard</a></div>
     </div>
     <!--End-breadcrumbs-->

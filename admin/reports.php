@@ -165,6 +165,7 @@ include('../user/connection.php');
 
         if (mysqli_num_rows($result) > 0) {
             ?>
+            <h4 class="text-center">Search Results</h4>
             <div class="well">
                 <table class="table table-bordered">
                     <thead>
@@ -173,22 +174,23 @@ include('../user/connection.php');
                             <th>Category</th>
                             <th>Unit</th>
                             <th>Size</th>
-                            <th>Quantity</th>
+                            <th>Quantity of Parts</th>
                             <th>Expiration</th>
                             <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                    
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
                             echo "<td>" . $row['product'] . "</td>";
                             echo "<td>" . $row['category'] . "</td>";
-                            echo "<td>" . $row['unit'] . "</td>";
                             echo "<td>" . $row['size'] . "</td>";
+                            echo "<td>" . $row['unit'] . "</td>";
                             echo "<td>" . $row['quantity'] . "</td>";
+                            echo "<td>" . $row['price'] . " $</td>";
                             echo "<td>" . $row['expiration_date'] . "</td>";
-                            echo "<td>" . $row['price'] . "</td>";
                             echo "</tr>";
                         }
 
